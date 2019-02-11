@@ -21,7 +21,6 @@ class TCPHeaderParser(PacketParser):
         print('Sequence: {}. Acknowledgement: {}'.format(sequence, acknowledgement))
         print('Data: ')
         print(self._format_multi_line('\t', data))
-        print('--------------------- text data in utf-8 --------------------')
         print("".join(map(chr, data)))
 
     def _format_multi_line(self, prefix, string, size=80):
