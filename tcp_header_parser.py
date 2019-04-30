@@ -1,4 +1,5 @@
-from parser import *
+from packet_parser import *
+from xml_writer import XMLWriter
 
 class TCPHeaderParser(PacketParser):
 
@@ -22,6 +23,10 @@ class TCPHeaderParser(PacketParser):
         print('Data: ')
         print(self._format_multi_line('\t', data))
         print("".join(map(chr, data)))
+
+        xml_writer = XMLWriter.getXMLWriter()
+        xml_writer.save_tcp_header(src_port, dest_port, sequence, acknowledgement, data)
+        xml_writer.save_to_xml_file()
 
     def _format_multi_line(self, prefix, string, size=80):
         size -= len(prefix)
