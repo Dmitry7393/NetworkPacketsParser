@@ -6,6 +6,7 @@ class XMLWriter:
     __instance = None
 
     def __init__(self):
+        self._path = ''
         self.doc = minidom.Document()
         self.root = self.doc.createElement('data')
         self.doc.appendChild(self.root)
@@ -14,6 +15,9 @@ class XMLWriter:
             raise Exception("This class is a singleton!")
         else:
             XMLWriter.__instance = self
+
+    def setPath(self, path):
+        self._path = path
 
     @staticmethod
     def getXMLWriter():
@@ -77,5 +81,9 @@ class XMLWriter:
 
     def save_to_xml_file(self):
         xml_str = self.doc.toprettyxml(indent="  ")
-        with open("sniffed_data2.xml", "a") as f:
+        with open(self._path, "a") as f:
             f.write(xml_str)
+
+        self.doc = minidom.Document()
+        self.root = self.doc.createElement('data')
+        self.doc.appendChild(self.root)

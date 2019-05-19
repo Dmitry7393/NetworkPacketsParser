@@ -19,8 +19,7 @@ class TCPHeaderParser(PacketParser):
 
         print('TCP Segment: ')
         print('Source port: {}, Destination Port: {}'.format(src_port, dest_port))
-        print('Sequence: {}. Acknowledgement: {}'.format(sequence, acknowledgement))
-        print('Data: ')
+        print('Sequence: {}. AcknowledgementWITH_L: {}'.format(sequence, acknowledgement))
         print(self._format_multi_line('\t', data))
         print("".join(map(chr, data)))
 
