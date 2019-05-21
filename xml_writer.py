@@ -70,7 +70,7 @@ class XMLWriter:
         udp_elem = self.doc.createElement('udp_header')
         self.root.appendChild(udp_elem)
 
-        fields = ['SourcePort', 'DestinationPort', 'Length']
+        fields = ['SourcePort', 'DestinationPort', 'Length', 'Data']
         i = 0
         for field in args:
             item = self.doc.createElement(fields[i])

@@ -55,4 +55,6 @@ class XMLReader:
 
         length = doc.getElementsByTagName("Length")[0].firstChild.data
 
-        return source_port, destination_port, length
+        data = doc.getElementsByTagName("Data")[0].firstChild.data
+
+        return source_port, destination_port, length, data

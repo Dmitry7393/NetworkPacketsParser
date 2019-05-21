@@ -12,6 +12,8 @@ class UDPHeaderParser(PacketParser):
 
         print('UDP Segment: ')
         print('Source port: {}, Destination Port: {}, Length: {}'.format(src_port, dest_port, length))
+        print('Data: {}'.format(data[self.UDP_HEADER_LENGTH:]))
 
         xml_writer = XMLWriter.getXMLWriter()
-        xml_writer.save_udp_header(src_port, dest_port, length)
+        xml_writer.save_udp_header(src_port, dest_port, length, data[self.UDP_HEADER_LENGTH:])
+        xml_writer.save_to_xml_file()
